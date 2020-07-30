@@ -20,9 +20,9 @@
 tests = [ 
         
     #tests for when parking lot has no space availaible
-    {'description': ' PINA: 0x0F => PORTC: 0x00 ',                            
+    {'description': ' PINA: 0x0F => PORTC: 0x80 ',                            
     'steps': [ {'inputs': [('PINA', 0x0F) ], 'iterations': 5 } ],
-    'expected': [('PORTC',0x00)],
+    'expected': [('PORTC',0x80)],
     },
 
     #tests for when parking lot has one space available
