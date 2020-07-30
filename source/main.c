@@ -28,17 +28,13 @@ int main(void) {
     		tmpA = PINA & 0xFF;  
 		tmpB = PINB & 0xFF;
 		tmpC = PINC & 0xFF;
-		tmpD = PIND & 0x00;
 
     		// 2) Perform computation
-    		if( (tmpA + tmpB + tmpC + tmpD) > 0x8C){
-			
+    		if( (tmpA + tmpB + tmpC) > 0x8C){
+			tmpD = 0x01;
 		}
-		
-		if(DiffAandC > 0x50)
 
-    		// 3) Write output
-    		PORTD = tmpD;
+    		// 3) write output
   	}
   	return 0;
 }
