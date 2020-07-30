@@ -1,7 +1,7 @@
 /*	Author: Trung Lam
  *  Partner(s) Name: None
  *	Lab Section: B22
- *	Assignment: Lab #2  Exercise #2
+ *	Assignment: Lab #2  Exercise #4
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -13,35 +13,32 @@
 #endif
 
 int main(void) {
-	DDRA = 0x00; PORTA = 0xFF; // Configure port A's 8 pins as inputs (parking sensors)
-  	DDRC = 0xFF; PORTC = 0x00; // Configure port C's 8 pins as outputs (# of spaces)
+	DDRA = 0x00; PORTA = 0xFF; // Configure port A's 8 pins as inputs (weight person 1)
+	DDRB = 0x00; PORTB = 0xFF; // Configure port B's 8 pins as inputs (weight person 2)
+  	DDRC = 0x00; PORTC = 0xFF; // Configure port C's 8 pins as inputs (weight person 3)
+	DDRD = 0xFF; PORTD = 0x00; // Configure port D's 8 pins as output (output)
 
   	unsigned char tmpA = 0x00;
+	unsigned char tmpB = 0x00;
 	unsigned char tmpC = 0x00;
+	unsigned char tmpD = 0x00;
 
   	while(1) {
     		// 1) Read input
-    		tmpA = PINA & 0x0F; //initialize tmpA with A3-A0 
+    		tmpA = PINA & 0xFF;  
+		tmpB = PINB & 0xFF;
+		tmpC = PINC & 0xFF;
+		tmpD = PIND & 0x00;
 
     		// 2) Perform computation
-    		if(tmpA == 0x0F){
-			tmpC = 0x80;
+    		if( (tmpA + tmpB + tmpC + tmpD) > 0x8C){
+			
 		}
-		else if(tmpA == 0x0E || tmpA == 0x07 || tmpA == 0x0B || tmpA == 0x0D){
-			tmpC = 0x01;
-		}
-		else if(tmpA == 0x0C || tmpA == 0x06 || tmpA == 0x03 || tmpA == 0x09 || tmpA == 0x05 || tmpA == 0x0A) {
-			tmpC = 0x02;
-		}
-		else if(tmpA == 0x08 || tmpA == 0x04 || tmpA == 0x02 || tmpA == 0x01){
-			tmpC = 0x03;
-		}
-		else{
-			tmpC = 0x04;
-		}
+		
+		if(DiffAandC > 0x50)
 
     		// 3) Write output
-    		PORTC = tmpC;
+    		PORTD = tmpD;
   	}
   	return 0;
 }
