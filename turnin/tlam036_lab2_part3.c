@@ -1,7 +1,7 @@
 /*	Author: Trung Lam
  *  Partner(s) Name: None
  *	Lab Section: B22
- *	Assignment: Lab #2  Exercise #2
+ *	Assignment: Lab #2  Exercise #3
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
